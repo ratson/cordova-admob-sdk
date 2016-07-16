@@ -16,6 +16,8 @@ def extract_ios(zip_file):
     dest = 'src/ios'
     try:
         shutil.rmtree(dest)
+    except FileNotFoundError:
+        pass
     finally:
         os.makedirs(dest)
     with tempfile.TemporaryDirectory() as tmpdirname:
@@ -27,22 +29,27 @@ def extract_ios(zip_file):
                 filename.endswith('/GoogleMobileAds.framework')
             ):
                 dirs.append(filename)
-        print(dirs)
         for filename in dirs:
             shutil.move(filename, dest)
 
 
 def extract_wp8(zip_file):
+    dest = 'src/wp8'
+    try:
+        os.makedirs(dest)
+    except FileExistsError:
+        pass
     with tempfile.TemporaryDirectory() as tmpdirname:
         for member in zip_file.namelist():
             if 'lib/windowsphone8' in member:
                 filename = zip_file.extract(member, path=tmpdirname)
                 if os.path.isfile(filename):
-                    shutil.move(filename, 'src/wp8')
+                    shutil.move(filename, dest)
 
 
+versions_file = 'sdk-versions.json'
 try:
-    current_versions = json.load(open('update-sdk.json'))
+    current_versions = json.load(open(versions_file))
 except FileNotFoundError:
     current_versions = {}
 
@@ -67,4 +74,4 @@ for platform, extract in (
     extract(z)
     current_versions[platform] = version
 
-json.dump(current_versions, open('update-sdk.json', 'w'), sort_keys=True)
+json.dump(current_versions, open(versions_file, 'w'), sort_keys=True)
