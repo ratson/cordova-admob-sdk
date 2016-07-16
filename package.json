@@ -1,0 +1,38 @@
+{
+  "name": "cordova-admob-sdk",
+  "version": "0.0.1",
+  "description": "Google Admob SDK to Cordova.",
+  "cordova": {
+    "id": "cordova-admob-sdk",
+    "platforms": [
+      "android",
+      "ios",
+      "amazon-fireos",
+      "wp8"
+    ]
+  },
+  "repository": "rehy/cordova-admob-sdk",
+  "keywords": [
+    "cordova",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova-windows",
+    "cordova-wp8",
+    "ad",
+    "admob",
+    "google"
+  ],
+  "author": {
+    "name": "Ratson"
+  },
+  "license": "MIT",
+  "files": [
+    "*.js",
+    "*.md",
+    "*.xml",
+    "LICENSE",
+    "src",
+    "www"
+  ]
+}
