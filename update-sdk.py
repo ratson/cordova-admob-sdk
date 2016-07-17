@@ -1,5 +1,5 @@
 """
-pip install requests pyquery
+pip install pyquery
 """
 import json
 import os

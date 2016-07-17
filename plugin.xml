@@ -5,7 +5,7 @@
     version="0.0.1">
 
     <name>cordova-admob-sdk</name>
-    <description>Google Admob SDK for Cordova</description>
+    <description>Google AdMob SDK for Cordova</description>
     <author>Ratson</author>
     <keywords>admob,google,ad</keywords>
     <repo>https://github.com/rehy/cordova-admob-sdk.git</repo>
