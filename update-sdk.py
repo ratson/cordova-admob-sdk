@@ -12,28 +12,32 @@ import zipfile
 from pyquery import PyQuery as pq
 
 
-def extract_ios(zip_file):
+def extract_ios(zip_file, version):
     dest = 'src/ios'
+    framework_dir = os.path.join(dest, 'GoogleMobileAds.framework')
     try:
         shutil.rmtree(dest)
     except FileNotFoundError:
         pass
     finally:
-        os.makedirs(dest)
+        os.makedirs(framework_dir)
     with tempfile.TemporaryDirectory() as tmpdirname:
-        dirs = []
-        for member in zip_file.namelist():
-            filename = zip_file.extract(member, path=tmpdirname)
-            if os.path.isdir(filename) and (
-                filename.endswith('/Mediation Adapters') or
-                filename.endswith('/GoogleMobileAds.framework')
-            ):
-                dirs.append(filename)
-        for filename in dirs:
-            shutil.move(filename, dest)
+        zip_file.extractall(tmpdirname)
+        sdk_dir = os.path.join(
+            tmpdirname, 'GoogleMobileAdsSdkiOS-{}/'.format(version))
+        shutil.move(os.path.join(sdk_dir, 'Mediation Adapters'), dest)
+
+        shutil.move(os.path.join(
+            sdk_dir, 'GoogleMobileAds.framework', 'Modules'), framework_dir)
+        shutil.move(os.path.join(
+            sdk_dir, 'GoogleMobileAds.framework',
+            'Versions', 'A', 'GoogleMobileAds'), framework_dir)
+        shutil.move(os.path.join(
+            sdk_dir, 'GoogleMobileAds.framework',
+            'Versions', 'A', 'Headers'), framework_dir)
 
 
-def extract_wp8(zip_file):
+def extract_wp8(zip_file, version):
     dest = 'src/wp8'
     try:
         os.makedirs(dest)
@@ -71,7 +75,7 @@ for platform, extract in (
     print(platform, version, download_url)
     filehandle, _ = urllib.request.urlretrieve(download_url)
     z = zipfile.ZipFile(filehandle, 'r')
-    extract(z)
+    extract(z, version)
     current_versions[platform] = version
 
 json.dump(current_versions, open(versions_file, 'w'), sort_keys=True)
