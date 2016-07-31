@@ -1,6 +1,6 @@
 {
   "name": "cordova-admob-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Google AdMob SDK to Cordova.",
   "cordova": {
     "id": "cordova-admob-sdk",

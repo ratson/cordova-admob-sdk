@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-admob-sdk"
-    version="0.0.1">
+    version="0.0.3">
 
     <name>cordova-admob-sdk</name>
     <description>Google AdMob SDK for Cordova</description>
@@ -33,18 +33,23 @@
         <framework src="AdSupport.framework" />
         <framework src="AudioToolbox.framework" />
         <framework src="AVFoundation.framework" />
+        <framework src="CoreBluetooth.framework" />
         <framework src="CoreGraphics.framework" />
         <framework src="CoreMedia.framework" />
+        <framework src="CoreMotion.framework" />
         <framework src="CoreTelephony.framework" />
+        <framework src="CoreVideo.framework" />
         <framework src="EventKit.framework" />
         <framework src="EventKitUI.framework" />
         <framework src="Foundation.framework" />
+        <framework src="GLKit.framework" />
         <framework src="MediaPlayer.framework" />
         <framework src="MessageUI.framework" />
+        <framework src="OpenGLES.framework" />
+        <framework src="SafariServices.framework" />
         <framework src="StoreKit.framework" />
         <framework src="SystemConfiguration.framework" />
         <framework src="UIKit.framework" />
-        <framework src="QuartzCore.framework" />
     </platform>
 
     <!-- Windows Phone 8 -->
