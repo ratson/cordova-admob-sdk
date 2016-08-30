@@ -1,6 +1,3 @@
-"""
-pip install pyquery
-"""
 import json
 import os
 import shutil
@@ -9,7 +6,11 @@ import tempfile
 import urllib
 import zipfile
 
-from pyquery import PyQuery as pq
+try:
+    from pyquery import PyQuery as pq
+except ImportError:
+    print("Run `pip install pyquery`")
+    exit()
 
 
 def extract_ios(zip_file, version):
