@@ -68,7 +68,7 @@ for platform, extract in (
     version = tr.find('td').eq(0).text().split(' v')[-1]
     if not version:
         tr0 = doc('table.responsive tr').eq(0)
-        version = tr0.text().split(' v')[-1]
+        version = tr0.text().split(' ')[-1]
         tr = doc('table.responsive tr').eq(1)
     if version in current_versions.get(platform, ''):
         continue
