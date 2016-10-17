@@ -52,31 +52,52 @@ def extract_wp8(zip_file, version):
                     shutil.move(filename, dest)
 
 
-versions_file = 'sdk-versions.json'
-try:
-    current_versions = json.load(open(versions_file))
-except FileNotFoundError:
-    current_versions = {}
+def main():
+    try:
+        subprocess.check_call([
+            'git', 'diff-index', '--name-status', '--exit-code', 'HEAD', '--'])
+    except subprocess.CalledProcessError as ex:
+        print('Error: Git working directory not clean.')
+        exit(ex.returncode)
 
-for platform, extract in (
-    ('ios', extract_ios),
-    ('wp', extract_wp8),
-):
-    url = 'https://developers.google.com/admob/{}/download'.format(platform)
-    doc = pq(url)
-    tr = doc('#download{}'.format(platform))
-    version = tr.find('td').eq(0).text().split(' v')[-1]
-    if not version:
-        tr0 = doc('table.responsive tr').eq(0)
-        version = tr0.text().split(' ')[-1]
-        tr = doc('table.responsive tr').eq(1)
-    if version in current_versions.get(platform, ''):
-        continue
-    download_url = tr.find('td a').attr('href')
-    print(platform, version, download_url)
-    filehandle, _ = urllib.request.urlretrieve(download_url)
-    z = zipfile.ZipFile(filehandle, 'r')
-    extract(z, version)
-    current_versions[platform] = version
+    commit_msg = 'Update SDK: '
+    versions_file = 'sdk-versions.json'
+    try:
+        current_versions = json.load(open(versions_file))
+    except FileNotFoundError:
+        current_versions = {}
 
-json.dump(current_versions, open(versions_file, 'w'), sort_keys=True)
+    has_update = False
+    for platform, extract in (
+        ('ios', extract_ios),
+        ('wp', extract_wp8),
+    ):
+        url = ('https://developers.google.com/admob/{}/download'
+               '').format(platform)
+        doc = pq(url)
+        tr = doc('#download{}'.format(platform))
+        version = tr.find('td').eq(0).text().split(' v')[-1]
+        if not version:
+            tr0 = doc('table.responsive tr').eq(0)
+            version = tr0.text().split(' ')[-1]
+            tr = doc('table.responsive tr').eq(1)
+        if version in current_versions.get(platform, ''):
+            continue
+        download_url = tr.find('td a').attr('href')
+        print(platform, version, download_url)
+        filehandle, _ = urllib.request.urlretrieve(download_url)
+        z = zipfile.ZipFile(filehandle, 'r')
+        extract(z, version)
+        current_versions[platform] = version
+        commit_msg += '{sep}{platform} -> {version}'.format(
+            platform=platform, version=version, sep=', ' if has_update else '')
+        has_update = True
+
+    if has_update:
+        json.dump(current_versions, open(versions_file, 'w'), sort_keys=True)
+        subprocess.check_call(['git', 'add', '.'])
+        subprocess.check_call(['git', 'commit', '-m', commit_msg])
+
+
+if __name__ == '__main__':
+    main()
