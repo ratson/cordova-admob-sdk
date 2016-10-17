@@ -67,14 +67,14 @@ GAD_ASSUME_NONNULL_BEGIN
 @interface GADNativeAppInstallAdView : UIView
 
 /// This property must point to the native app install ad object rendered by this ad view.
-@property(nonatomic, strong) GADNativeAppInstallAd *nativeAppInstallAd;
+@property(nonatomic, strong, GAD_NULLABLE) GADNativeAppInstallAd *nativeAppInstallAd;
 
 /// Weak reference to your ad view's headline asset view.
-@property(nonatomic, weak) IBOutlet UIView *headlineView;
+@property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *headlineView;
 /// Weak reference to your ad view's call to action asset view.
-@property(nonatomic, weak) IBOutlet UIView *callToActionView;
+@property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *callToActionView;
 /// Weak reference to your ad view's icon asset view.
-@property(nonatomic, weak) IBOutlet UIView *iconView;
+@property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *iconView;
 /// Weak reference to your ad view's body asset view.
 @property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *bodyView;
 /// Weak reference to your ad view's store asset view.

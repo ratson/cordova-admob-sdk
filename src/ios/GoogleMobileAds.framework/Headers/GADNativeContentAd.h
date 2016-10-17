@@ -58,10 +58,10 @@ GAD_ASSUME_NONNULL_BEGIN
 @interface GADNativeContentAdView : UIView
 
 /// This property must point to the native content ad object rendered by this ad view.
-@property(nonatomic, strong) GADNativeContentAd *nativeContentAd;
+@property(nonatomic, strong, GAD_NULLABLE) GADNativeContentAd *nativeContentAd;
 
 /// Weak reference to your ad view's headline asset view.
-@property(nonatomic, weak) IBOutlet UIView *headlineView;
+@property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *headlineView;
 /// Weak reference to your ad view's body asset view.
 @property(nonatomic, weak, GAD_NULLABLE) IBOutlet UIView *bodyView;
 /// Weak reference to your ad view's image asset view.
