@@ -27,11 +27,10 @@
     "cordova-wp8",
     "ad",
     "admob",
-    "google"
+    "google",
+    "sdk"
   ],
-  "author": {
-    "name": "Ratson"
-  },
+  "author": "Ratson",
   "license": "MIT",
   "files": [
     "*.js",
