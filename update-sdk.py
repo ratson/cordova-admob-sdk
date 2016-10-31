@@ -51,7 +51,20 @@ def extract_wp8(zip_file, version):
                     shutil.move(filename, dest)
 
 
+def print_release_notes():
+    url = 'https://firebase.google.com/docs/admob/release-notes'
+    print('fetching {}'.format(url))
+    doc = pq(url)
+    for h2 in doc('.devsite-article-body > h2').items():
+        td_items = list(h2.next('table').find('tr').eq(1).items('td'))
+        print(h2.text(), td_items[0].text(), td_items[1].text())
+        print(td_items[2].text())
+        print()
+
+
 def main():
+    print_release_notes()
+
     try:
         subprocess.check_call([
             'git', 'diff-index', '--name-status', '--exit-code', 'HEAD', '--'])
