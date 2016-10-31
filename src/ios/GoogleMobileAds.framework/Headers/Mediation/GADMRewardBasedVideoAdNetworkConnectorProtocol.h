@@ -7,8 +7,8 @@
 
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-#import "GADMediationAdRequest.h"
-#import "GADMRewardBasedVideoAdNetworkAdapterProtocol.h"
+@protocol GADMediationAdRequest;
+@protocol GADMRewardBasedVideoAdNetworkAdapter;
 
 /// Reward based video ad network adapters interact with the mediation SDK using an object that
 /// conforms to the GADMRewardBasedVideoAdNetworkConnector protocol. The connector object can be
