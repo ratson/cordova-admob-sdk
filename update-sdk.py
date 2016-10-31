@@ -26,7 +26,6 @@ def extract_ios(zip_file, version):
         zip_file.extractall(tmpdirname)
         sdk_dir = os.path.join(
             tmpdirname, 'GoogleMobileAdsSdkiOS-{}/'.format(version))
-        shutil.move(os.path.join(sdk_dir, 'Mediation Adapters'), dest)
 
         shutil.move(os.path.join(
             sdk_dir, 'GoogleMobileAds.framework', 'Modules'), framework_dir)
@@ -74,6 +73,7 @@ def main():
     ):
         url = ('https://developers.google.com/admob/{}/download'
                '').format(platform)
+        print('fetching {}'.format(url))
         doc = pq(url)
         tr = doc('#download{}'.format(platform))
         version = tr.find('td').eq(0).text().split(' v')[-1]
@@ -89,7 +89,7 @@ def main():
         z = zipfile.ZipFile(filehandle, 'r')
         extract(z, version)
         current_versions[platform] = version
-        commit_msg += '{sep}{platform} -> {version}'.format(
+        commit_msg += '{sep}{platform}-v{version}'.format(
             platform=platform, version=version, sep=', ' if has_update else '')
         has_update = True
 
