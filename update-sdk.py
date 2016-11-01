@@ -37,20 +37,6 @@ def extract_ios(zip_file, version):
             'Versions', 'A', 'Headers'), framework_dir)
 
 
-def extract_wp8(zip_file, version):
-    dest = 'src/wp8'
-    try:
-        os.makedirs(dest)
-    except FileExistsError:
-        pass
-    with tempfile.TemporaryDirectory() as tmpdirname:
-        for member in zip_file.namelist():
-            if 'lib/windowsphone8' in member:
-                filename = zip_file.extract(member, path=tmpdirname)
-                if os.path.isfile(filename):
-                    shutil.move(filename, dest)
-
-
 def print_release_notes():
     url = 'https://firebase.google.com/docs/admob/release-notes'
     print('fetching {}'.format(url))
@@ -82,7 +68,6 @@ def main():
     has_update = False
     for platform, extract in (
         ('ios', extract_ios),
-        ('wp', extract_wp8),
     ):
         url = ('https://developers.google.com/admob/{}/download'
                '').format(platform)
