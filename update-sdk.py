@@ -48,9 +48,7 @@ def print_release_notes():
         print()
 
 
-def main():
-    print_release_notes()
-
+def ensure_git_clean():
     try:
         subprocess.check_call([
             'git', 'diff-index', '--name-status', '--exit-code', 'HEAD', '--'])
@@ -58,43 +56,44 @@ def main():
         print('Error: Git working directory not clean.')
         exit(ex.returncode)
 
-    commit_msg = 'Update SDK: '
-    versions_file = 'sdk-versions.json'
+
+def main():
+    print_release_notes()
+    ensure_git_clean()
+
+    versions_file = os.path.join(
+        os.path.dirname(__file__), 'sdk-versions.json')
     try:
         current_versions = json.load(open(versions_file))
     except FileNotFoundError:
         current_versions = {}
 
-    has_update = False
-    for platform, extract in (
-        ('ios', extract_ios),
-    ):
-        url = ('https://developers.google.com/admob/{}/download'
-               '').format(platform)
-        print('fetching {}'.format(url))
-        doc = pq(url)
-        tr = doc('#download{}'.format(platform))
-        version = tr.find('td').eq(0).text().split(' v')[-1]
-        if not version:
-            tr0 = doc('table.responsive tr').eq(0)
-            version = tr0.text().split(' ')[-1]
-            tr = doc('table.responsive tr').eq(1)
-        if version in current_versions.get(platform, ''):
-            continue
-        download_url = tr.find('td a').attr('href')
-        print(platform, version, download_url)
-        filehandle, _ = urllib.request.urlretrieve(download_url)
-        z = zipfile.ZipFile(filehandle, 'r')
-        extract(z, version)
-        current_versions[platform] = version
-        commit_msg += '{sep}{platform}-v{version}'.format(
-            platform=platform, version=version, sep=', ' if has_update else '')
-        has_update = True
+    platform = 'iOS'
+    p = platform.lower()
+    url = 'https://developers.google.com/admob/{}/download'.format(p)
+    print('fetching {}'.format(url))
+    doc = pq(url)
+    tr = doc('#download{}'.format(p))
+    version = tr.find('td').eq(0).text().split(' v')[-1]
+    if not version:
+        tr0 = doc('table.responsive tr').eq(0)
+        version = tr0.text().split(' ')[-1]
+        tr = doc('table.responsive tr').eq(1)
+    if version in current_versions.get(p, ''):
+        return
+    download_url = tr.find('td a').attr('href')
+    print(platform, version, download_url)
+    filehandle, _ = urllib.request.urlretrieve(download_url)
+    z = zipfile.ZipFile(filehandle, 'r')
+    extract_ios(z, version)
+    current_versions[p] = version
 
-    if has_update:
-        json.dump(current_versions, open(versions_file, 'w'), sort_keys=True)
-        subprocess.check_call(['git', 'add', '.'])
-        subprocess.check_call(['git', 'commit', '-m', commit_msg])
+    with open(versions_file, 'w') as f:
+        json.dump(current_versions, f, sort_keys=True, indent=2)
+        f.write('\n')
+    subprocess.check_call(['git', 'add', '.'])
+    commit_msg = 'Update iOS SDK to v{version}'.format(version=version)
+    subprocess.check_call(['git', 'commit', '-m', commit_msg])
 
 
 if __name__ == '__main__':
