@@ -12,9 +12,7 @@
     "id": "cordova-admob-sdk",
     "platforms": [
       "android",
-      "ios",
-      "amazon-fireos",
-      "wp8"
+      "ios"
     ]
   },
   "repository": "rehy/cordova-admob-sdk",
@@ -23,8 +21,6 @@
     "ecosystem:cordova",
     "cordova-android",
     "cordova-ios",
-    "cordova-windows",
-    "cordova-wp8",
     "ad",
     "admob",
     "google",

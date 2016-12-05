@@ -16,16 +16,8 @@
     </engines>
 
     <platform name="android">
-        <!-- for gradle -->
         <framework src="com.google.android.gms:play-services-base:+" />
         <framework src="com.google.android.gms:play-services-ads:+" />
-        <!-- for ant -->
-        <!--dependency id="cordova-plugin-googleplayservices"/ -->
-    </platform>
-
-    <platform name="amazon-fireos">
-        <!-- using ant, framework tag for android sdk cannot be supported, so we use external dependency -->
-        <dependency id="cordova-plugin-googleplayservices" />
     </platform>
 
     <platform name="ios">
@@ -50,34 +42,6 @@
         <framework src="StoreKit.framework" />
         <framework src="SystemConfiguration.framework" />
         <framework src="UIKit.framework" />
-    </platform>
-
-    <!-- Windows Phone 8 -->
-    <platform name="wp8">
-        <config-file target="Properties/WMAppManifest.xml" parent="/Deployment/App/Capabilities">
-            <Capability Name="ID_CAP_IDENTITY_USER" />
-            <Capability Name="ID_CAP_NETWORKING" />
-            <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
-            <Capability Name="ID_CAP_PHONEDIALER" />
-            <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
-        </config-file>
-
-        <framework src="src/wp8/GoogleAds.dll" custom="true" />
-    </platform>
-
-    <!-- Windows Phone 8.1+ -->
-    <platform name="windows">
-        <config-file target="package.windows.appxmanifest" parent="/Package/Capabilities">
-            <Capability Name="internetClientServer" />
-        </config-file>
-        <config-file target="package.windows80.appxmanifest" parent="/Package/Capabilities">
-            <Capability Name="internetClientServer" />
-        </config-file>
-        <config-file target="package.phone.appxmanifest" parent="/Package/Capabilities">
-            <Capability Name="internetClientServer" />
-        </config-file>
-
-        <framework src="src/wp8/GoogleAds.dll" custom="true" />
     </platform>
 
 </plugin>
