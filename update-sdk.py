@@ -70,7 +70,7 @@ def main():
 
     platform = 'iOS'
     p = platform.lower()
-    url = 'https://developers.google.com/admob/{}/download'.format(p)
+    url = 'https://firebase.google.com/docs/admob/{}/download'.format(p)
     print('fetching {}'.format(url))
     doc = pq(url)
     tr = doc('#download{}'.format(p))
