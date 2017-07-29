@@ -6,7 +6,7 @@
     "version": "sync-package-version --cordova-plugin"
   },
   "devDependencies": {
-    "sync-package-version": "0.0.4"
+    "sync-package-version": "0.0.5"
   },
   "cordova": {
     "id": "cordova-admob-sdk",
