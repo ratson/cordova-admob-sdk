@@ -42,7 +42,7 @@
   ],
   "lint-staged": {
     "plugin.xml": [
-      "lintspaces -n -t -d spaces -s 4"
+      "lintspaces -d spaces -s 4"
     ]
   }
 }
