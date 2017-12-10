@@ -13,7 +13,7 @@
         <engine name="cordova-android" version=">=6.3.0"/>
     </engines>
     <platform name="android">
-        <preference name="PLAY_SERVICES_VERSION" default="11.0.1"/>
+        <preference name="PLAY_SERVICES_VERSION" default="11.0.4"/>
         <framework src="com.google.android.gms:play-services-base:$PLAY_SERVICES_VERSION" />
         <framework src="com.google.android.gms:play-services-ads:$PLAY_SERVICES_VERSION" />
     </platform>
