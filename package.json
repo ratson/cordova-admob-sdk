@@ -8,7 +8,7 @@
   },
   "devDependencies": {
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0",
+    "lint-staged": "^7.0.5",
     "lintspaces-cli": "^0.6.0",
     "sync-package-version": "0.0.5"
   },
