@@ -11,7 +11,7 @@
 
 @class GADRequest;
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Google AdMob Ads error domain.
 GAD_EXTERN NSString *const kGADErrorDomain;
@@ -67,4 +67,4 @@ typedef NS_ENUM(NSInteger, GADErrorCode) {
 @interface GADRequestError : NSError
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

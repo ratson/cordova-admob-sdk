@@ -9,7 +9,7 @@
 
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 typedef NSString *GADAdLoaderAdType GAD_STRING_ENUM;
 
@@ -38,4 +38,4 @@ GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeDFPBanner;
 /// conform to the GADUnifiedNativeAdLoaderDelegate protocol. See GADUnifiedNativeAd.h.
 GAD_EXTERN GADAdLoaderAdType const kGADAdLoaderAdTypeUnifiedNative;
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

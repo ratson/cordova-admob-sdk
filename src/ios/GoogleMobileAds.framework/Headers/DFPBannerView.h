@@ -6,6 +6,7 @@
 //
 
 #import <GoogleMobileAds/DFPCustomRenderedBannerViewDelegate.h>
+#import <GoogleMobileAds/GADAdLoader.h>
 #import <GoogleMobileAds/GADAdLoaderDelegate.h>
 #import <GoogleMobileAds/GADAppEventDelegate.h>
 #import <GoogleMobileAds/GADBannerView.h>
@@ -13,7 +14,7 @@
 #import <GoogleMobileAds/GADVideoController.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// The delegate of a GADAdLoader object must conform to this protocol to receive DFPBannerViews.
 @protocol DFPBannerAdLoaderDelegate<GADAdLoaderDelegate>
@@ -38,13 +39,13 @@ GAD_ASSUME_NONNULL_BEGIN
 /// for targeting and statistics.
 ///
 /// Example DFP ad unit ID: @"/6499/example/banner"
-@property(nonatomic, copy, GAD_NULLABLE) NSString *adUnitID;
+@property(nonatomic, copy, nullable) NSString *adUnitID;
 
 /// Optional delegate that is notified when creatives send app events.
-@property(nonatomic, weak, GAD_NULLABLE) IBOutlet id<GADAppEventDelegate> appEventDelegate;
+@property(nonatomic, weak, nullable) IBOutlet id<GADAppEventDelegate> appEventDelegate;
 
 /// Optional delegate that is notified when creatives cause the banner to change size.
-@property(nonatomic, weak, GAD_NULLABLE) IBOutlet id<GADAdSizeDelegate> adSizeDelegate;
+@property(nonatomic, weak, nullable) IBOutlet id<GADAdSizeDelegate> adSizeDelegate;
 
 /// Optional array of NSValue encoded GADAdSize structs, specifying all valid sizes that are
 /// appropriate for this slot. Never create your own GADAdSize directly. Use one of the predefined
@@ -61,17 +62,17 @@ GAD_ASSUME_NONNULL_BEGIN
 ///
 ///   bannerView.validAdSizes = validSizes;
 ///   </pre>
-@property(nonatomic, copy, GAD_NULLABLE) NSArray *validAdSizes;
+@property(nonatomic, copy, nullable) NSArray<NSValue *> *validAdSizes;
 
 /// Correlator object for correlating this object to other ad objects.
-@property(nonatomic, strong, GAD_NULLABLE) GADCorrelator *correlator;
+@property(nonatomic, strong, nullable) GADCorrelator *correlator;
 
 /// Indicates that the publisher will record impressions manually when the ad becomes visible to the
 /// user.
 @property(nonatomic, assign) BOOL enableManualImpressions;
 
 /// Optional delegate object for custom rendered ads.
-@property(nonatomic, weak, GAD_NULLABLE)
+@property(nonatomic, weak, nullable)
     IBOutlet id<DFPCustomRenderedBannerViewDelegate> customRenderedBannerViewDelegate;
 
 /// Video controller for controlling video rendered by this ad view.
@@ -87,7 +88,7 @@ GAD_ASSUME_NONNULL_BEGIN
 ///
 /// @param adOptions An array of GADAdLoaderOptions objects. The array is deep copied and option
 /// objects cannot be modified after calling this method.
-- (void)setAdOptions:(NSArray *)adOptions;
+- (void)setAdOptions:(NSArray<GADAdLoaderOptions *> *)adOptions;
 
 #pragma mark Deprecated
 
@@ -107,4 +108,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

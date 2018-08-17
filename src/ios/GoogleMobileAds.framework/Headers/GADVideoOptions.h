@@ -8,7 +8,7 @@
 #import <GoogleMobileAds/GADAdLoader.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Video ad options.
 @interface GADVideoOptions : GADAdLoaderOptions
@@ -24,4 +24,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

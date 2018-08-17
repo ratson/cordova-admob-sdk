@@ -8,7 +8,7 @@
 #import <GoogleMobileAds/GADAudioVideoManagerDelegate.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Provides audio and video notifications and configurations management. Available only on iOS 7
 /// and above.
@@ -31,4 +31,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

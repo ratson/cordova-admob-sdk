@@ -12,7 +12,7 @@
 
 @class GADDebugOptionsViewController;
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Delegate for the GADDebugOptionsViewController.
 @protocol GADDebugOptionsViewControllerDelegate<NSObject>
@@ -28,9 +28,8 @@ GAD_ASSUME_NONNULL_BEGIN
 + (instancetype)debugOptionsViewControllerWithAdUnitID:(NSString *)adUnitID;
 
 /// Delegate for the debug options view controller.
-@property(nonatomic, weak, GAD_NULLABLE)
-    IBOutlet id<GADDebugOptionsViewControllerDelegate> delegate;
+@property(nonatomic, weak, nullable) IBOutlet id<GADDebugOptionsViewControllerDelegate> delegate;
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END

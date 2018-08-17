@@ -32,8 +32,8 @@ framework module GoogleMobileAds {
 
   header "GADAdNetworkExtras.h"
   header "GADAdSize.h"
-  header "GADAudioVideoManagerDelegate.h"
   header "GADAudioVideoManager.h"
+  header "GADAudioVideoManagerDelegate.h"
   header "GADBannerView.h"
   header "GADBannerViewDelegate.h"
   header "GADCorrelator.h"
@@ -49,6 +49,7 @@ framework module GoogleMobileAds {
   header "GADNativeExpressAdView.h"
   header "GADNativeExpressAdViewDelegate.h"
   header "GADRequest.h"
+  header "GADRequestConfiguration.h"
   header "GADRequestError.h"
   header "GADVideoController.h"
   header "GADVideoControllerDelegate.h"
@@ -85,8 +86,10 @@ framework module GoogleMobileAds {
   header "GADUnifiedNativeAdUnconfirmedClickDelegate.h"
 
   header "GADMultipleAdsAdLoaderOptions.h"
+  header "GADMuteThisAdReason.h"
   header "GADNativeAdImageAdLoaderOptions.h"
   header "GADNativeAdViewAdOptions.h"
+  header "GADNativeMuteThisAdLoaderOptions.h"
 
   header "GADCustomEventBanner.h"
   header "GADCustomEventBannerDelegate.h"
@@ -119,4 +122,5 @@ framework module GoogleMobileAds {
   header "Mediation/GADMEnums.h"
   header "Mediation/GADMRewardBasedVideoAdNetworkAdapterProtocol.h"
   header "Mediation/GADMRewardBasedVideoAdNetworkConnectorProtocol.h"
+
 }

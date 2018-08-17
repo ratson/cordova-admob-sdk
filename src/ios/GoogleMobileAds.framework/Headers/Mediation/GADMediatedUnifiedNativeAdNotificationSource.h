@@ -10,7 +10,7 @@
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 #import <GoogleMobileAds/Mediation/GADMediatedUnifiedNativeAd.h>
 
-GAD_ASSUME_NONNULL_BEGIN
+NS_ASSUME_NONNULL_BEGIN
 
 /// Used by mediation adapters to notify the Google Mobile Ads SDK about events occurring in the
 /// lifecycle of a GADMediatedUnifiedNativeAd.
@@ -52,4 +52,4 @@ GAD_ASSUME_NONNULL_BEGIN
 
 @end
 
-GAD_ASSUME_NONNULL_END
+NS_ASSUME_NONNULL_END
