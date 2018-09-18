@@ -22,23 +22,24 @@ NS_ASSUME_NONNULL_BEGIN
 /// Asks the delegate which banner ad sizes should be requested.
 - (NSArray<NSValue *> *)validBannerSizesForAdLoader:(GADAdLoader *)adLoader;
 
-/// Tells the delegate that a DFP banner ad was received.
+/// Tells the delegate that a Google Ad Manager banner ad was received.
 - (void)adLoader:(GADAdLoader *)adLoader didReceiveDFPBannerView:(DFPBannerView *)bannerView;
 
 @end
 
-/// The view that displays DoubleClick For Publishers banner ads.
+/// The view that displays Ad Manager banner ads.
 ///
 /// To request this ad type using GADAdLoader, you need to pass kGADAdLoaderAdTypeDFPBanner (see
 /// GADAdLoaderAdTypes.h) to the |adTypes| parameter in GADAdLoader's initializer method. If you
 /// request this ad type, your delegate must conform to the DFPBannerAdLoaderDelegate protocol.
+GAD_SUBCLASSING_RESTRICTED
 @interface DFPBannerView : GADBannerView
 
-/// Required value created on the DFP website. Create a new ad unit for every unique placement of an
-/// ad in your application. Set this to the ID assigned for this placement. Ad units are important
-/// for targeting and statistics.
+/// Required value created on the Ad Manager website. Create a new ad unit for every unique
+/// placement of an ad in your application. Set this to the ID assigned for this placement. Ad units
+/// are important for targeting and statistics.
 ///
-/// Example DFP ad unit ID: @"/6499/example/banner"
+/// Example Ad Manager ad unit ID: @"/6499/example/banner"
 @property(nonatomic, copy, nullable) NSString *adUnitID;
 
 /// Optional delegate that is notified when creatives send app events.

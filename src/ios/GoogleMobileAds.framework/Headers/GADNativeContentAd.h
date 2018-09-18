@@ -26,6 +26,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// you request this ad type, your delegate must conform to the GADNativeContentAdLoaderDelegate
 /// protocol.
 GAD_DEPRECATED_MSG_ATTRIBUTE("Use GADUnifiedNativeAd instead.")
+GAD_SUBCLASSING_RESTRICTED
 @interface GADNativeContentAd : GADNativeAd
 
 #pragma mark - Must be displayed

@@ -13,6 +13,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /// Native ad image.
+GAD_SUBCLASSING_RESTRICTED
 @interface GADNativeAdImage : NSObject
 
 /// The image. If image autoloading is disabled, this property will be nil.

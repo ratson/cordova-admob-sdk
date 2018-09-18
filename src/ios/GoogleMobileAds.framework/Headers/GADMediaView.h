@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 ///
 /// If the native ad doesn't contain a video and image loading is disabled, the GADMediaView object
 /// is empty.
+GAD_SUBCLASSING_RESTRICTED
 @interface GADMediaView : UIView
 
 @end

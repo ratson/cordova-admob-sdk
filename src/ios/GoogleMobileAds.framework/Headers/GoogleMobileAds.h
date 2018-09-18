@@ -72,6 +72,7 @@ FOUNDATION_EXPORT const unsigned char GoogleMobileAdsVersionString[];
 #import <GoogleMobileAds/GADNativeCustomTemplateAd.h>
 #import <GoogleMobileAds/GADUnifiedNativeAd.h>
 #import <GoogleMobileAds/GADUnifiedNativeAd+ConfirmationClick.h>
+#import <GoogleMobileAds/GADUnifiedNativeAd+CustomClickGesture.h>
 #import <GoogleMobileAds/GADUnifiedNativeAdAssetIdentifiers.h>
 #import <GoogleMobileAds/GADUnifiedNativeAdDelegate.h>
 #import <GoogleMobileAds/GADUnifiedNativeAdUnconfirmedClickDelegate.h>

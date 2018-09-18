@@ -13,15 +13,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/// DoubleClick For Publishers interstitial ad, a full-screen advertisement shown at natural
+/// Google Ad Manager interstitial ad, a full-screen advertisement shown at natural
 /// transition points in your application such as between game levels or news stories.
+GAD_SUBCLASSING_RESTRICTED
 @interface DFPInterstitial : GADInterstitial
 
-/// Required value created on the DFP website. Create a new ad unit for every unique placement of an
+/// Required value created on the Ad Manager website. Create a new ad unit for every unique
+/// placement of an
 /// ad in your application. Set this to the ID assigned for this placement. Ad units are important
 /// for targeting and stats.
 ///
-/// Example DFP ad unit ID: @"/6499/example/interstitial"
+/// Example Ad Manager ad unit ID: @"/6499/example/interstitial"
 @property(nonatomic, readonly, copy) NSString *adUnitID;
 
 /// Correlator object for correlating this object to other ad objects.

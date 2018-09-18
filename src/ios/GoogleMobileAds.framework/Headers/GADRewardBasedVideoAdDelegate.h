@@ -8,10 +8,11 @@
 #import <Foundation/Foundation.h>
 
 #import <GoogleMobileAds/GADAdReward.h>
-#import <GoogleMobileAds/GADRewardBasedVideoAd.h>
 #import <GoogleMobileAds/GoogleMobileAdsDefines.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
+@class GADRewardBasedVideoAd;
 
 /// Delegate for receiving state change messages from a GADRewardBasedVideoAd such as ad requests
 /// succeeding/failing.

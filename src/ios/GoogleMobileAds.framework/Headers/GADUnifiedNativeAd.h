@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 /// (see GADAdLoaderAdTypes.h) to the |adTypes| parameter in GADAdLoader's initializer method. If
 /// you request this ad type, your delegate must conform to the GADUnifiedNativeAdLoaderDelegate
 /// protocol.
+GAD_SUBCLASSING_RESTRICTED
 @interface GADUnifiedNativeAd : NSObject
 
 #pragma mark - Must be displayed if available
