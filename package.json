@@ -3,13 +3,12 @@
   "version": "0.18.0",
   "description": "Google AdMob SDK to Cordova.",
   "scripts": {
-    "version": "sync-package-version --cordova-plugin",
-    "precommit": "lint-staged"
+    "version": "sync-package-version --cordova-plugin"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^7.0.5",
-    "lintspaces-cli": "^0.6.0",
+    "husky": "^1.0.0-rc.14",
+    "lint-staged": "^7.3.0",
+    "lintspaces-cli": "^0.6.1",
     "sync-package-version": "0.0.5"
   },
   "cordova": {
@@ -40,6 +39,11 @@
     "src",
     "www"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
   "lint-staged": {
     "plugin.xml": [
       "lintspaces -d spaces -s 4"
